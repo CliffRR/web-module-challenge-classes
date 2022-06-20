@@ -44,8 +44,30 @@ class Airplane {
 */
 
 class Person {
-  
+  constructor(name, age){
+    this.name = name;
+    this.age = age; 
+    this.stomach = [];
+  }
+
+  eat(Food) {
+    if(this.stomach.length >= 10){
+      return this.stomach
+    }
+    this.stomach.push(Food);
+    return this.stomach
+  }
+
+  poop() {
+    return this.stomach = [];
+  }
+
+  toString() {
+    return `${this.name}, ${this.age}`
+  }
 }
+
+const Person2 = new Person('Cliff', 23)
 
 /*
   TASK 2
@@ -62,8 +84,29 @@ class Person {
 */
 
 class Car {
-  
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+
+  fill(gallons) {
+    this.tank = this.tank + gallons;
+    return
+  }
+
+  drive(distance){
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - (this.milesPerGallon/distance);
+    if(this.tank === 0){
+    return `I ran out of fuel at ${this.odometer} miles!`
+    }
+  }
 }
+
+const Car2 = new Car('Mustang', 23)
+
 
 /*
   TASK 3
@@ -79,8 +122,18 @@ class Car {
 */
 
 class Lambdasian {
-  
+  constructor(prop){
+    this.name = prop.name;
+    this.age = prop.age;
+    this.location = prop.location;
+  }
+
+  speak() {
+    return `Hello my name is ${prop.name}, I am from ${prop.location}`
+  }
 }
+
+const yer = new Lambdasian({name: 'Cliff', age: 23, location: 'NJ'})
 
 /*
   TASK 4
@@ -97,9 +150,24 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 
-class Instructor {
+class Instructor extends Lambdasian {
+  constructor (prop){
+    super(prop);
+    this.specialty = prop.specialty;
+    this.favLanguage = prop.favLanguage;
+    this.catchPhrase = prop.catchPhrase;
+  }
 
+  demo(subject) {
+    return `Today we are learning about ${subject}`
+  }
+
+  grade(subject) {
+    return `${student.name} receives a perfect score on ${subject}`
+  }
 }
+
+const yer2 = new Instructor({name: 'Cliff', age: 23, location: 'NJ', specialty: 'Python', favLanguage: 'Java', catchPhrase: "You already know!"})
 
 /*
   TASK 5
@@ -117,9 +185,28 @@ class Instructor {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-class Student {
+class Student extends Lambdasian{
+  constructor (prop){
+    super(prop);
+    this.previousBackground = prop.previousBackground;
+    this.className = prop.className;
+    this.favSubjects = prop.favSubjects;
+  }
    
+  listSubjects() {
+    return this.favSubjects;
+  }
+
+  PRAssignment(subject){
+    return `${student.name} has submitted a PR for ${subject}`
+  }
+
+  sprintChallenge(subject){
+    return `${student.name} has begun sprint challenge on ${subject}`
+  }
 }
+
+const yer3 = new Student({name: 'Cliff', age: 23, location: 'NJ', previousBackground: "Python", className: "CS1234", favSubjects: ['math','science','english']})
 
 /*
   TASK 6
@@ -135,9 +222,23 @@ class Student {
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
+class ProjectManager extends Instructor{
+  constructor (prop){
+    super(prop);
+    this.gradClassName = prop.gradClassName;
+    this.favInstructor = prop.favInstructor;
+  }
    
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
+  }
+
+  debugsCode(studentname,subject){
+    return `${this.name} debugs ${studentname}'s code on ${subject}`
+  }
 }
+
+const yer4 = new ProjectManager({name: 'Cliff', age: 23, location: 'NJ', specialty: 'Python', favLanguage: 'Java', catchPhrase: "You already know!", gradClassName: "coolclassname", favInstructor: "Mr.Reinoso"} )
 
 /*
   STRETCH PROBLEM (no tests!)
